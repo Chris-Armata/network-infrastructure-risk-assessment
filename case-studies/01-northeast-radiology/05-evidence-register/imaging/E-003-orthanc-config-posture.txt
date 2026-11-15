@@ -1,0 +1,13 @@
+  "HttpPort" : 8042,
+  "DicomAet" : "ORTHANC",
+  "DicomPort" : 4242,
+  "RemoteAccessAllowed" : true,
+  "SslEnabled" : false,
+  // if "SslEnabled" is true.
+  // require SSL 1.2. This option is only meaningful if "SslEnabled"
+  // "SslEnabled" is true. (new in Orthanc 1.8.2)
+  // option is only meaningful if "SslEnabled" is true.
+  // "AuthenticationEnabled" is not explicitly set, authentication is
+  // "AuthenticationEnabled" equals that of "RemoteAccessAllowed").
+     "AuthenticationEnabled" : false,
+     * "DicomAet" configuration option in order to specify another AET

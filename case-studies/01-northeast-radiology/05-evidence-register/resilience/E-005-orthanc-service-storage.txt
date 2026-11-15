@@ -1,0 +1,5 @@
+=== Orthanc Service Status ===
+active
+=== Orthanc Storage & Index Paths ===
+  "StorageDirectory" : "/var/lib/orthanc/db-v6",
+  "IndexDirectory" : "/var/lib/orthanc/db-v6",

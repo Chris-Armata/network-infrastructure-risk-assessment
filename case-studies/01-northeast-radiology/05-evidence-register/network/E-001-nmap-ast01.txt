@@ -1,0 +1,47 @@
+# Nmap 7.94SVN scan initiated Sun Nov 15 01:15:41 2026 as: nmap -sT -Pn -T2 -sV -p 22,4242,8042 -oN case-studies/01-northeast-radiology/05-evidence-register/network/E-001-nmap-ast01.txt 10.0.2.15
+Nmap scan report for cyberriskassessment (10.0.2.15)
+Host is up (0.0043s latency).
+
+PORT     STATE SERVICE         VERSION
+22/tcp   open  ssh             OpenSSH 9.6p1 Ubuntu 3ubuntu13.20 (Ubuntu Linux; protocol 2.0)
+4242/tcp open  vrml-multi-use?
+8042/tcp open  fs-agent?
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port8042-TCP:V=7.94SVN%I=7%D=11/15%Time=6AF907D8%P=x86_64-pc-linux-gnu%
+SF:r(GenericLines,105,"HTTP/1\.0\x20400\x20Bad\x20Request\r\nCache-Control
+SF::\x20no-cache,\x20no-store,\x20must-revalidate,\x20private,\x20max-age=
+SF:0\r\nExpires:\x200\r\nPragma:\x20no-cache\r\nContent-Type:\x20text/plai
+SF:n;\x20charset=utf-8\r\nDate:\x20Sun,\x2015\x20Nov\x202026\x2001:16:08\x
+SF:20GMT\r\nConnection:\x20close\r\n\r\nError\x20400:\x20Bad\x20Request\nB
+SF:ad\x20request")%r(GetRequest,A2,"HTTP/1\.1\x20301\x20Moved\x20Permanent
+SF:ly\r\nConnection:\x20keep-alive\r\nKeep-Alive:\x20timeout=1\r\nLocation
+SF::\x20app/explorer\.html\r\nX-Content-Type-Options:\x20nosniff\r\nConten
+SF:t-Length:\x200\r\n\r\n")%r(HTTPOptions,7D,"HTTP/1\.1\x20404\x20Not\x20F
+SF:ound\r\nConnection:\x20keep-alive\r\nKeep-Alive:\x20timeout=1\r\nX-Cont
+SF:ent-Type-Options:\x20nosniff\r\nContent-Length:\x200\r\n\r\n")%r(RTSPRe
+SF:quest,10A,"HTTP/RTSP/1\.0\x20400\x20Bad\x20Request\r\nCache-Control:\x2
+SF:0no-cache,\x20no-store,\x20must-revalidate,\x20private,\x20max-age=0\r\
+SF:nExpires:\x200\r\nPragma:\x20no-cache\r\nContent-Type:\x20text/plain;\x
+SF:20charset=utf-8\r\nDate:\x20Sun,\x2015\x20Nov\x202026\x2001:16:08\x20GM
+SF:T\r\nConnection:\x20close\r\n\r\nError\x20400:\x20Bad\x20Request\nBad\x
+SF:20request")%r(RPCCheck,10B,"HTTP/1\.0\x20400\x20Bad\x20Request\r\nCache
+SF:-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private,\x20
+SF:max-age=0\r\nExpires:\x200\r\nPragma:\x20no-cache\r\nContent-Type:\x20t
+SF:ext/plain;\x20charset=utf-8\r\nDate:\x20Sun,\x2015\x20Nov\x202026\x2001
+SF::16:08\x20GMT\r\nConnection:\x20close\r\n\r\nError\x20400:\x20Bad\x20Re
+SF:quest\nMalformed\x20message")%r(DNSVersionBindReqTCP,10B,"HTTP/1\.0\x20
+SF:400\x20Bad\x20Request\r\nCache-Control:\x20no-cache,\x20no-store,\x20mu
+SF:st-revalidate,\x20private,\x20max-age=0\r\nExpires:\x200\r\nPragma:\x20
+SF:no-cache\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nDate:\x20S
+SF:un,\x2015\x20Nov\x202026\x2001:16:08\x20GMT\r\nConnection:\x20close\r\n
+SF:\r\nError\x20400:\x20Bad\x20Request\nMalformed\x20message")%r(DNSStatus
+SF:RequestTCP,10B,"HTTP/1\.0\x20400\x20Bad\x20Request\r\nCache-Control:\x2
+SF:0no-cache,\x20no-store,\x20must-revalidate,\x20private,\x20max-age=0\r\
+SF:nExpires:\x200\r\nPragma:\x20no-cache\r\nContent-Type:\x20text/plain;\x
+SF:20charset=utf-8\r\nDate:\x20Sun,\x2015\x20Nov\x202026\x2001:16:08\x20GM
+SF:T\r\nConnection:\x20close\r\n\r\nError\x20400:\x20Bad\x20Request\nMalfo
+SF:rmed\x20message");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Nov 15 01:16:16 2026 -- 1 IP address (1 host up) scanned in 34.64 seconds

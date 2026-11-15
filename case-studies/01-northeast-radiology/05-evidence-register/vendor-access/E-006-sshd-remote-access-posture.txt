@@ -1,0 +1,3 @@
+=== Active SSH Configuration Directives (/etc/ssh/sshd_config & sshd_config.d) ===
+/etc/ssh/sshd_config:12:Include /etc/ssh/sshd_config.d/*.conf
+/etc/ssh/sshd_config:71:KbdInteractiveAuthentication no
