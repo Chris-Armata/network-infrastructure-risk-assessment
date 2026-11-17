@@ -56,3 +56,11 @@ network-infrastructure-risk-assessment/
 ├── case-study-1.html       # Interactive Case Study 01 video player & chapter timeline
 └── case_study_1_web.mp4    # Web-optimized 1080p walkthrough recording (11:08)
 ```
+
+---
+
+### Case Study 02: Comprehensive Neurology, P.C. — Ransomware Blast Radius Containment & Zero Trust Remediation
+- **Live Walkthrough:** [Watch Technical Video & Chapter Breakdown](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-2.html)
+- **Full Assessment Artifacts:** [`case-studies/02-comprehensive-neurology-ransomware/`](case-studies/02-comprehensive-neurology-ransomware/README.md)
+- **Regulatory Benchmark:** HHS OCR Settlement (April 2025) — $25,000 Penalty / 6,800 Patient ePHI Records
+- **Protocols Assessed:** SMB / CIFS (`TCP 445`)
