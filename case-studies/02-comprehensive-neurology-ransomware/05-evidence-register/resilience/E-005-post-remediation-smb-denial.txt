@@ -1,0 +1,32 @@
+# Evidence ID: E-005
+# Title: Post-Remediation Samba RBAC & Zero Trust Containment Proof
+# Collector: Chris Armata | Target: 10.0.2.15 | UTC: 2026-11-16T14:29:44Z
+
+$ testparm -s
+[global]
+    map to guest = Never
+    min protocol = SMB3_11
+    restrict anonymous = 2
+    server signing = mandatory
+    usershare allow guests = No
+
+[ClinicBackups]
+    browseable = No
+    create mask = 0640
+    directory mask = 0750
+    guest ok = No
+    path = /srv/samba/ClinicBackups
+    read only = No
+    valid users = backup_admin
+
+$ ls -ld /srv/samba/ClinicBackups
+drwxr-x--- 2 backup_admin backup_admin 4096 Nov 16 14:26 /srv/samba/ClinicBackups
+
+$ smbclient -L //127.0.0.1 -N
+session setup failed: NT_STATUS_ACCESS_DENIED
+
+$ smbclient //10.0.2.15/ClinicBackups -N --timeout=5
+do_connect: Connection to 10.0.2.15 failed (Error NT_STATUS_IO_TIMEOUT)
+
+$ tail -n 1 /var/log/ufw.log
+Nov 16 14:29:41 ast02 kernel: [UFW BLOCK] IN=enp0s3 SRC=10.0.2.25 DST=10.0.2.15 PROTO=TCP SPT=51844 DPT=445 SYN

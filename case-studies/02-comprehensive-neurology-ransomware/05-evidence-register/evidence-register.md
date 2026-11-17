@@ -1,8 +1,9 @@
-# Stage 8: Master Evidence Register (`E-001` – `E-005`)
-| ID | Stage | Evidence | Result |
+# Stage 05: Technical Evidence Register
+| Evidence ID | File Path | Collection Command | Linked Findings |
 | :--- | :--- | :--- | :--- |
-| `E-001` | Baseline | `smbclient -L //10.0.2.15 -N` | Enumerated `ClinicRecords` & `ClinicBackups` |
-| `E-002` | Baseline | `smbclient //10.0.2.15/ClinicBackups -N -c "put payload.txt"` | Anonymous upload succeeded |
-| `E-003` | Remediation | Hardened `smb.conf` & UFW rule | `445/tcp ALLOW 10.0.2.50` active |
-| `E-004` | Validation | `smbclient //10.0.2.15/ClinicBackups -N -c "put payload2.txt"` | `NT_STATUS_ACCESS_DENIED` |
-| `E-005` | Validation | `nc -zv 10.0.2.15 445` | `Connection timed out` |
+| `E-001` | `network/E-001-nmap-smb-ast02.txt` | `nmap -sV -sC -p 22,139,445 10.0.2.15` | `F-01`, `F-03`, `F-04` |
+| `E-002` | `infrastructure/E-002-smb-baseline-posture.txt` | `testparm -s` & `ls -ld /srv/samba/ClinicBackups` | `F-01`, `F-02` |
+| `E-003` | `clinical-storage/E-003-unauth-smb-ransomware-drop.txt` | `smbclient -L //10.0.2.15 -N` & `put payload.txt` | `F-01`, `F-02` |
+| `E-004` | `network/E-004-ufw-baseline-vs-hardened.txt` | `sudo ufw status verbose` (Before & After) | `F-03` |
+| `E-005` | `resilience/E-005-post-remediation-smb-denial.txt` | `NT_STATUS_ACCESS_DENIED` & `[UFW BLOCK]` logs | Validation |
+| `E-006` | `vendor-access/E-006-sshd-and-backup-service-posture.txt` | `sshd -T` & `backup_admin` share check | Validation |

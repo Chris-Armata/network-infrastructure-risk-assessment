@@ -1,0 +1,20 @@
+# Evidence ID: E-001
+# Title: Baseline Network Exposure & SMB Service Enumeration (AST-02)
+# Collector: Chris Armata | Target: 10.0.2.15 | Source: 10.0.2.25 | UTC: 2026-11-16T14:05:12Z
+
+$ nmap -sV -sC -p 22,139,445 10.0.2.15
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-11-16 14:05 UTC
+Nmap scan report for ast02.compneuro.local (10.0.2.15)
+Host is up (0.00042s latency).
+
+PORT    STATE SERVICE     VERSION
+22/tcp  open  ssh         OpenSSH 9.6p1 Ubuntu 3ubuntu13.5 (Ubuntu Linux; protocol 2.0)
+139/tcp open  netbios-ssn Samba smbd 4.19.5-Ubuntu
+445/tcp open  microsoft-ds?
+
+Host script results:
+| smb2-security-mode:
+|   3:1:1:
+|_    Message signing enabled but not required
+|_nbstat: NetBIOS name: AST-02, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+Nmap done: 1 IP address (1 host up) scanned in 2.38 seconds

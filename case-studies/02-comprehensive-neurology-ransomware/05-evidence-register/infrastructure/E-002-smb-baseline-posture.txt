@@ -1,0 +1,26 @@
+# Evidence ID: E-002
+# Title: Baseline Samba Daemon Configuration & Filesystem Permissions
+# Collector: Chris Armata | Target: 10.0.2.15 | UTC: 2026-11-16T14:08:40Z
+
+$ testparm -s
+Load smb config files from /etc/samba/smb.conf
+Loaded services file OK.
+Server role: ROLE_STANDALONE
+
+[global]
+    log file = /var/log/samba/log.%m
+    logging = file
+    map to guest = Bad User
+    server role = standalone server
+    usershare allow guests = Yes
+
+[ClinicBackups]
+    comment = Comprehensive Neurology EHR & Billing Backup Repository
+    create mask = 0777
+    directory mask = 0777
+    guest ok = Yes
+    path = /srv/samba/ClinicBackups
+    read only = No
+
+$ ls -ld /srv/samba/ClinicBackups
+drwxrwxrwx 2 root root 4096 Nov 16 14:02 /srv/samba/ClinicBackups

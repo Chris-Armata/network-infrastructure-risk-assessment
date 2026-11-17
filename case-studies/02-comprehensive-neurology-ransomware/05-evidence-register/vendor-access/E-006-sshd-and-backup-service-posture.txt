@@ -1,0 +1,18 @@
+# Evidence ID: E-006
+# Title: Administrative SSH Posture & Authorized Backup Service Verification
+# Collector: Chris Armata | Target: 10.0.2.15 | UTC: 2026-11-16T14:33:10Z
+
+$ sudo sshd -T | grep -E 'permitrootlogin|passwordauthentication|pubkeyauthentication|allowusers'
+permitrootlogin no
+passwordauthentication no
+pubkeyauthentication yes
+allowusers assessor backup_admin
+
+$ systemctl is-active smbd
+active
+
+$ sudo smbclient //10.0.2.15/ClinicBackups -U backup_admin%REDACTED -c 'ls'
+  .                                   D        0  Mon Nov 16 14:26:11 2026
+  ..                                  D        0  Mon Nov 16 14:02:10 2026
+  ehr_neuro_daily_20261116.bak        A 18432000  Mon Nov 16 02:00:04 2026
+  billing_claims_q4.tar.gz            A  4194304  Mon Nov 16 02:01:18 2026

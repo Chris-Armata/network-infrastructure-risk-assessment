@@ -1,3 +1,9 @@
-# Stage 3: Clinical Architecture, Trust Boundaries & Data-Flow Map
-- **Baseline:** Flat subnet with `UFW ALLOW Anywhere` on `445/tcp` and Samba `guest ok = yes`.
-- **Target Zero Trust (NIST SP 800-207):** UFW host PEP restricting `445/tcp` to `10.0.2.50` + Samba RBAC (`valid users = backup_admin`).
+# Stage 03: Clinical Architecture & Trust Boundaries
+```text
+[BASELINE: FLAT SUBNET — CRITICAL BLAST RADIUS]
+  FRONT-DESK-01 (10.0.2.25) ──[TCP/445 Open]──> AST-02 (10.0.2.15) [guest ok=Yes, 0777] -> ENCRYPTED
+
+[REMEDIATED: ZERO TRUST MICRO-SEGMENTATION — CONTAINED BLAST RADIUS]
+  FRONT-DESK-01 (10.0.2.25) ──[TCP/445 SYN]───X [UFW DROP: Not in 10.0.2.50 Allowlist]
+  BACKUP-ADMIN-01 (10.0.2.50) ─[TCP/445 SMB3]─> AST-02 (10.0.2.15) [valid users=backup_admin, 0750] -> PROTECTED
+```
