@@ -233,7 +233,7 @@
           Your browser does not support HTML5 video playback.
         </video>
         <div class="player-bar">
-          <span id="nowPlaying">Chapter 1: Flat Network Risk &amp; HHS OCR Case Context</span>
+          <span id="nowPlaying">Chapter 1: Context &amp; Assumed Breach</span>
           <div class="speed-controls">
             <span>Speed:</span>
             <button class="speed-btn active" onclick="setSpeed(1, this)">1x</button>
@@ -245,11 +245,28 @@
 
       <aside class="chapters-panel">
         <h2>Walkthrough Chapters</h2>
-        <button class="chapter-btn active" data-start="0" onclick="seekTo(0, this)"><span class="ch-time">00:00</span><span class="ch-info"><strong>1. Flat Network Risk &amp; Context</strong><span>April 2025 HHS OCR case &amp; Zero Trust</span></span></button>
-        <button class="chapter-btn" data-start="45" onclick="seekTo(45, this)"><span class="ch-time">00:45</span><span class="ch-info"><strong>2. Act 1: Assumed Breach</strong><span>SMB enumeration &amp; ransomware drop</span></span></button>
-        <button class="chapter-btn" data-start="135" onclick="seekTo(135, this)"><span class="ch-time">02:15</span><span class="ch-info"><strong>3. Act 2: Defense in Depth</strong><span>Samba RBAC &amp; UFW micro-segmentation</span></span></button>
-        <button class="chapter-btn" data-start="225" onclick="seekTo(225, this)"><span class="ch-time">03:45</span><span class="ch-info"><strong>4. Act 3: Containment Proof</strong><span>NT_STATUS_ACCESS_DENIED &amp; UFW drop</span></span></button>
-      </aside>
+        <button class="chapter-btn active" data-start="0" data-title="Chapter 1: Context &amp; Assumed Breach">
+              <span class="chapter-time">00:00</span>
+              <div class="chapter-info">
+                <div class="chapter-title">1. Context &amp; Assumed Breach</div>
+                <div class="chapter-desc">HHS OCR context, SMB enumeration &amp; ransomware drop</div>
+              </div>
+            </button>
+            <button class="chapter-btn" data-start="50" data-title="Chapter 2: Zero Trust Defense in Depth">
+              <span class="chapter-time">00:50</span>
+              <div class="chapter-info">
+                <div class="chapter-title">2. Zero Trust Defense in Depth</div>
+                <div class="chapter-desc">Samba RBAC &amp; UFW source-IP micro-segmentation</div>
+              </div>
+            </button>
+            <button class="chapter-btn" data-start="100" data-title="Chapter 3: Containment &amp; Verification">
+              <span class="chapter-time">01:40</span>
+              <div class="chapter-info">
+                <div class="chapter-title">3. Containment &amp; Verification</div>
+                <div class="chapter-desc">NT_STATUS_ACCESS_DENIED &amp; firewall drop proof</div>
+              </div>
+            </button>
+</aside>
     </div>
 
     <div class="grid-2">
