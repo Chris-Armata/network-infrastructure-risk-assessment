@@ -28,6 +28,7 @@ This directory contains the complete, self-contained assessment artifact chain f
 | **Stage 9.6** | Medical-Device Cybersecurity Lifecycle Snapshot | [`15-medical-device-lifecycle-snapshot/medical-device-lifecycle-snapshot.md`](15-medical-device-lifecycle-snapshot/medical-device-lifecycle-snapshot.md) |
 | **Stage 10** | Executive Healthcare Imaging Cyber Risk Report | [`16-executive-risk-report.md`](16-executive-risk-report.md) |
 | **Stage 10** | Technical Findings & Evidence Verification Report | [`17-technical-findings-report.md`](17-technical-findings-report.md) |
+| **Stage 18** | Automated Zero Trust & Orthanc Hardening Script | [`18-remediation-scripts/remediate_orthanc_pacs_zt.sh`](18-remediation-scripts/remediate_orthanc_pacs_zt.sh) |
 | **Stage 11** | Assessment Closure & Client Acknowledgement | [`19-assessment-closure-acknowledgement.md`](19-assessment-closure-acknowledgement.md) |
 | **Stage 14** | Remediation Validation Report | [`20-remediation-validation-report/remediation-validation-report.md`](20-remediation-validation-report/remediation-validation-report.md) |
 | **Integrity** | Master SHA256 Evidence & Artifact Hash Manifest | [`21-evidence-hash-manifest.txt`](21-evidence-hash-manifest.txt) |
