@@ -1,0 +1,17 @@
+# Evidence ID: E-001 | Source: WKST-01 (10.0.2.25) | Target: DC-01 (10.0.2.15) | UTC: 2026-11-20T13:45:55Z
+$ nmap -sV -p 22,389,445,8443,8444,8445 10.0.2.15
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-11-20 13:45 UTC
+Nmap scan report for 10.0.2.15
+Host is up (0.0015s latency).
+
+PORT     STATE SERVICE     VERSION
+22/tcp   open  ssh         OpenSSH 9.6p1 Ubuntu 3ubuntu13.19 (Ubuntu Linux; protocol 2.0)
+389/tcp  open  http        BaseHTTPServer 0.6 (Python 3.12.3)
+445/tcp  open  netbios-ssn Samba smbd 4.6.2
+8443/tcp open  http        BaseHTTPServer 0.6 (Python 3.12.3)
+8444/tcp open  http        BaseHTTPServer 0.6 (Python 3.12.3)
+8445/tcp open  http        BaseHTTPServer 0.6 (Python 3.12.3)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 25.39 seconds

@@ -1,0 +1,12 @@
+# Evidence ID: E-005 | Source: WKST-01 (10.0.2.25) | Target: DC-01 (10.0.2.15) | UTC: 2026-11-20T13:55:26Z
+--- [1] Local Loopback Auth Layer Check (Anonymous SYSVOL Rejected) ---
+Anonymous login successful
+tree connect failed: NT_STATUS_ACCESS_DENIED
+--- [2] Lateral SMB Probe from WKST-01 (10.0.2.25) ---
+do_connect: Connection to 10.0.2.15 failed (Error NT_STATUS_IO_TIMEOUT)
+--- [3] Lateral Directory Probe from WKST-01 (10.0.2.25) ---
+curl: (28) Connection timed out after 3002 milliseconds
+--- [4] Kernel Firewall Drop Telemetry (journalctl -k) ---
+Nov 20 13:55:34 cyberriskassessment kernel: [UFW BLOCK] IN=vh-wkst01 OUT= MAC=e2:00:d3:b7:bf:84:62:cd:e6:f9:65:e5:08:00 SRC=10.0.2.25 DST=10.0.2.15 LEN=60 TOS=0x00 PREC=0x00 TTL=64 ID=13664 DF PROTO=TCP SPT=36110 DPT=636 WINDOW=64240 RES=0x00 SYN URGP=0 
+Nov 20 13:55:33 cyberriskassessment kernel: [UFW BLOCK] IN=vh-wkst01 OUT= MAC=e2:00:d3:b7:bf:84:62:cd:e6:f9:65:e5:08:00 SRC=10.0.2.25 DST=10.0.2.15 LEN=60 TOS=0x00 PREC=0x00 TTL=64 ID=13663 DF PROTO=TCP SPT=36110 DPT=636 WINDOW=64240 RES=0x00 SYN URGP=0 
+Nov 20 13:55:32 cyberriskassessment kernel: [UFW BLOCK] IN=vh-wkst01 OUT= MAC=e2:00:d3:b7:bf:84:62:cd:e6:f9:65:e5:08:00 SRC=10.0.2.25 DST=10.0.2.15 LEN=60 TOS=0x00 PREC=0x00 TTL=64 ID=13662 DF PROTO=TCP SPT=36110 DPT=636 WINDOW=64240 RES=0x00 SYN URGP=0 

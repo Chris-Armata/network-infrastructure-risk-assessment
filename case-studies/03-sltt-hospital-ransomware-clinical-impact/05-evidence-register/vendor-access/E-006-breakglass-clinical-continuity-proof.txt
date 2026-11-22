@@ -1,0 +1,21 @@
+# Evidence ID: E-006 | Sources: PAW-01 (10.0.2.50) & CLIN-01 (10.0.2.30) | UTC: 2026-11-20T13:55:35Z
+--- [1] Authorized Tier-0 PAW (10.0.2.50) LDAPS & SMB3 Verification ---
+{
+  "domain": "dc=sltthospital,dc=local",
+  "mode": "hardened",
+  "accounts": [
+    "svc_ct_gateway",
+    "svc_med_dispense",
+    "svc_lab_lis",
+    "tier0_admin"
+  ]
+}
+  .                                   D        0  Fri Nov 20 13:39:36 2026
+  ..                                  D        0  Fri Nov 20 13:39:36 2026
+  clinical_gpo_mount.ps1              N      194  Fri Nov 20 13:45:43 2026
+
+		38905184 blocks of size 1024. 20882296 blocks available
+--- [2] Simulating DC-01 Outage Again (Verifying Trauma Care Survival) ---
+HTTP 200 OK | TRAUMA-CT-GATEWAY: CONTINGENCY BREAK-GLASS ACTIVE - Head/Chest CT Worklist & PACS Routing Active (Queued for DC-01 Sync)
+HTTP 200 OK | PHARMACY-MED-ADC: CONTINGENCY BREAK-GLASS ACTIVE - Trauma Bay 1 Emergency Medication Dispensing Ready (Queued for DC-01 Sync)
+HTTP 200 OK | STAT-LAB-LIS: CONTINGENCY BREAK-GLASS ACTIVE - Blood Gas & Coagulation Panel Reporting Active (Queued for DC-01 Sync)

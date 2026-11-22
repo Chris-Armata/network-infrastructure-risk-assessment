@@ -4,6 +4,7 @@
 [![Framework](https://img.shields.io/badge/Framework-NIST_SP_800--207-34d399?style=for-the-badge)](#operating-methodology)
 [![Case Study 01](https://img.shields.io/badge/Case_Study_01-Video_Walkthrough_(11:08)-0f172a?style=for-the-badge)](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-1.html)
 [![Case Study 02](https://img.shields.io/badge/Case_Study_02-Video_Walkthrough_(02:25)-0f172a?style=for-the-badge)](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-2.html)
+[![Case Study 03](https://img.shields.io/badge/Case_Study_03-Video_Walkthrough_(07:03)-0f172a?style=for-the-badge)](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-3.html)
 
 A practical healthcare and critical-infrastructure cyber risk assessment operating playbook, laboratory, and portfolio of empirical, evidence-backed case studies.
 
@@ -75,6 +76,33 @@ Every assessment in this repository follows a reproducible, three-phase validati
 
 ---
 
+### Case Study 03: U.S. SLTT Hospital — Tier-0 Ransomware Clinical Impact & HIPAA Break-Glass Resilience
+- **Live Walkthrough:** [Watch 07:03 Technical Video & Chapter Breakdown](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-3.html)
+- **Full 21-Stage Assessment Artifacts:** [`case-studies/03-sltt-hospital-ransomware-clinical-impact/`](case-studies/03-sltt-hospital-ransomware-clinical-impact/README.md)
+- **Raw Evidence & Automation:** [`05-evidence-register/`](case-studies/03-sltt-hospital-ransomware-clinical-impact/05-evidence-register/) | [`remediate_sltt_hospital_zt.sh`](case-studies/03-sltt-hospital-ransomware-clinical-impact/18-remediation-scripts/remediate_sltt_hospital_zt.sh) | [`SHA-256 Manifest`](case-studies/03-sltt-hospital-ransomware-clinical-impact/21-evidence-hash-manifest.txt)
+- **Regulatory & Threat Benchmark:** CIS SLTT Hospital Ransomware Incident | NIST SP 800-207 | NIST CSF 2.0 | HIPAA Security Rule (`45 CFR § 164.308(a)(7)`)
+- **Protocols Assessed:** LDAP / LDAPS (`TCP 389/636`), SMB `SYSVOL` (`TCP 445`), Trauma CT (`8443/tcp`), Pharmacy (`8444/tcp`), Stat Lab (`8445/tcp`)
+
+#### Lab Topology & Zero Trust Policy Matrix
+
+| Node / Role | IPv4 Address | Permitted Port / Protocol | Enforcement Posture |
+| :--- | :--- | :--- | :--- |
+| **Master Domain Controller** (`DC-01`) | `10.0.2.15` | `636/tcp` (LDAPS), `445/tcp` (SMB3), `8443–8445/tcp` | Host-based UFW default-deny inbound; plaintext `:389` retired |
+| **Privileged Access Workstation** (`PAW-01`) | `10.0.2.50` | `22/tcp`, `636/tcp`, `445/tcp` (`ALLOW IN`) | Exclusive Tier-0 administrative allowlist + verified token auth |
+| **Emergency Clinical Floor** (`CLIN-01`) | `10.0.2.30` | `8443/tcp`, `8444/tcp`, `8445/tcp` (`ALLOW IN`) | Trauma CT, Pharmacy & Stat Lab with Break-Glass offline queuing |
+| **Front-Desk Intake PC** (`WKST-01`) | `10.0.2.25` | None (`[UFW BLOCK]` / Timeout) | Assumed-breach vantage point; lateral probes silently dropped |
+
+#### Baseline vs. Post-Remediation Evidence
+
+| Control Dimension | Phase 1: Baseline State | Phase 3: Zero Trust + Break-Glass State |
+| :--- | :--- | :--- |
+| **Directory & SYSVOL ACLs** | Unauthenticated LDAP `:389` & anonymous SMB `:445` (`0777`) | Plaintext `:389` closed; token-gated LDAPS `:636` & `SMB3_11` (`0750`) |
+| **Firewall Policy (UFW)** | `ALLOW IN Anywhere` across Tier-0 and clinical ports | Strict source-IP allowlists (`10.0.2.50` admin, `10.0.2.30` clinical) |
+| **Lateral Subnet Probe (`WKST-01`)** | Dumped service accounts & clinical GPO script anonymously | Silently dropped (`[UFW BLOCK]` / `NT_STATUS_IO_TIMEOUT`) |
+| **Clinical Continuity (`DC-01` Offline)** | Fail-closed freeze (`HTTP 503 Service Unavailable`) | `HTTP 200 OK — CONTINGENCY BREAK-GLASS ACTIVE` with local queuing |
+
+---
+
 ## Repository Structure
 
 ```text
@@ -85,7 +113,10 @@ network-infrastructure-risk-assessment/
 ├── case_study_1_web.mp4                               # Case Study 01 1080p walkthrough (11:08)
 ├── case-study-2.html                                  # Case Study 02 interactive video player & chapters
 ├── case_study_2_web.mp4                               # Case Study 02 1080p walkthrough (02:25)
+├── case-study-3.html                                  # Case Study 03 interactive video player & chapters
+├── case_study_3_web.mp4                               # Case Study 03 1080p walkthrough (07:03)
 └── case-studies/
     ├── 01-northeast-radiology/                        # 21-stage PACS / DICOM risk assessment & E-001..E-006
-    └── 02-comprehensive-neurology-ransomware/         # 21-stage Ransomware / SMB assessment, scripts & E-001..E-006
+    ├── 02-comprehensive-neurology-ransomware/         # 21-stage Ransomware / SMB assessment, scripts & E-001..E-006
+    └── 03-sltt-hospital-ransomware-clinical-impact/   # 21-stage SLTT Hospital assessment, scripts & E-001..E-006
 ```

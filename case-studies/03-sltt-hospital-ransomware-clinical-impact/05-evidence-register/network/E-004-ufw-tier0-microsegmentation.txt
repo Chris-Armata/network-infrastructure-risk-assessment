@@ -1,0 +1,37 @@
+# Evidence ID: E-004 | Target: DC-01 (10.0.2.15) | UTC: 2026-11-20T13:55:26Z
+=== [BEFORE REMEDIATION] ===
+Status: active
+Logging: on (medium)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    Anywhere                  
+389/tcp                    ALLOW IN    Anywhere                  
+445/tcp                    ALLOW IN    Anywhere                  
+8443/tcp                   ALLOW IN    Anywhere                  
+8444/tcp                   ALLOW IN    Anywhere                  
+8445/tcp                   ALLOW IN    Anywhere                  
+22/tcp (v6)                ALLOW IN    Anywhere (v6)             
+389/tcp (v6)               ALLOW IN    Anywhere (v6)             
+445/tcp (v6)               ALLOW IN    Anywhere (v6)             
+8443/tcp (v6)              ALLOW IN    Anywhere (v6)             
+8444/tcp (v6)              ALLOW IN    Anywhere (v6)             
+8445/tcp (v6)              ALLOW IN    Anywhere (v6)             
+
+=== [AFTER REMEDIATION] ===
+Status: active
+Logging: on (medium)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    10.0.2.50                 
+636/tcp                    ALLOW IN    10.0.2.50                 
+445/tcp                    ALLOW IN    10.0.2.50                 
+8443/tcp                   ALLOW IN    10.0.2.30                 
+8444/tcp                   ALLOW IN    10.0.2.30                 
+8445/tcp                   ALLOW IN    10.0.2.30                 
+

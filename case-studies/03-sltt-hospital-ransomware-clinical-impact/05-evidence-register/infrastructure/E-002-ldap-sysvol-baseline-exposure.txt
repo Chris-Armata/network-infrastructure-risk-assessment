@@ -1,0 +1,21 @@
+# Evidence ID: E-002 | Source: WKST-01 (10.0.2.25) | Target: DC-01 (10.0.2.15) | UTC: 2026-11-20T13:46:21Z
+$ curl -s http://10.0.2.15:389/directory
+{
+  "domain": "dc=sltthospital,dc=local",
+  "mode": "baseline",
+  "accounts": [
+    "svc_ct_gateway",
+    "svc_med_dispense",
+    "svc_lab_lis",
+    "tier0_admin"
+  ]
+}
+$ smbclient //10.0.2.15/SYSVOL -N -c 'ls; get clinical_gpo_mount.ps1 /tmp/gpo_leak.ps1'
+  .                                   D        0  Fri Nov 20 13:39:36 2026
+  ..                                  D        0  Fri Nov 20 13:39:36 2026
+  clinical_gpo_mount.ps1              N      194  Fri Nov 20 13:45:43 2026
+
+		38905184 blocks of size 1024. 20882464 blocks available
+# SLTT Hospital Tier-1 Clinical Dependency Binding
+$DirectoryServer = "dc01.sltthospital.local (10.0.2.15)"
+$ClinicalEndpoints = @("CT-Trauma-Gateway:8443", "Pharmacy-ADC:8444", "Lab-LIS:8445")

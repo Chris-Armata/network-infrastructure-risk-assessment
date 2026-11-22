@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study 3: SLTT Hospital Ransomware &amp; Break-Glass Resilience | Chris Armata</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --surface: #121826;
+      --surface-alt: #161e2e;
+      --border: #232d42;
+      --text: #e6edf7;
+      --muted: #93a1b8;
+      --accent: #38bdf8;
+      --accent-dim: rgba(56, 189, 248, 0.14);
+      --danger: #f87171;
+      --danger-dim: rgba(248, 113, 113, 0.12);
+      --green: #34d399;
+      --green-dim: rgba(52, 211, 153, 0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      line-height: 1.6;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+    .container { max-width: 1120px; margin: 0 auto; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.75rem;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    nav a:hover { color: var(--accent); }
+    .title-block { margin-bottom: 1.5rem; }
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.4rem;
+    }
+    .title-block h1 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 750;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+    }
+    .player-grid {
+      display: grid;
+      grid-template-columns: 1fr 330px;
+      gap: 1.25rem;
+      align-items: start;
+      margin-bottom: 2.25rem;
+    }
+    @media (max-width: 900px) {
+      .player-grid { grid-template-columns: 1fr; }
+    }
+    .video-shell {
+      background: #05070b;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .player-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .speed-controls { display: flex; align-items: center; gap: 0.35rem; }
+    .speed-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.25rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .speed-btn.active, .speed-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .chapters-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+    .chapters-panel h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .chapter-btn {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 0.65rem 0.75rem;
+      margin-bottom: 0.4rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: background 0.15s, border-color 0.15s;
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+    }
+    .chapter-btn:last-child { margin-bottom: 0; }
+    .chapter-btn:hover { background: var(--surface-alt); border-color: var(--border); }
+    .chapter-btn.active {
+      background: var(--accent-dim);
+      border-color: rgba(56, 189, 248, 0.45);
+    }
+    .ch-time {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      color: var(--accent);
+      background: var(--bg);
+      padding: 0.15rem 0.45rem;
+      border-radius: 5px;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .ch-info strong { display: block; font-size: 0.88rem; font-weight: 600; line-height: 1.3; }
+    .ch-info span { display: block; font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+    }
+    .panel h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .pill-vuln {
+      background: var(--danger-dim);
+      color: var(--danger);
+      font-size: 0.72rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .pill-fix {
+      background: var(--green-dim);
+      color: var(--green);
+      font-size: 0.72rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .panel ul { padding-left: 1.15rem; color: var(--muted); font-size: 0.93rem; }
+    .panel li { margin-bottom: 0.45rem; }
+    pre {
+      background: #070a10;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      margin-top: 0.85rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index.html">&larr; Back to Portfolio Overview</a>
+      <a href="https://github.com/Chris-Armata/network-infrastructure-risk-assessment/tree/main/case-studies/03-sltt-hospital-ransomware-clinical-impact" target="_blank" rel="noopener">
+        View 21-Stage Artifacts &amp; Evidence on GitHub &nearr;
+      </a>
+    </nav>
+
+    <div class="title-block">
+      <div class="eyebrow">Case Study 03 &bull; SLTT Hospital Ransomware &amp; Clinical Resilience</div>
+      <h1>Tier-0 Identity Isolation &amp; HIPAA Break-Glass Clinical Continuity</h1>
+    </div>
+
+    <div class="player-grid">
+      <div class="video-shell">
+        <video id="walkthroughVideo" controls preload="metadata" playsinline>
+          <source src="case_study_3_web.mp4" type="video/mp4" />
+          Your browser does not support HTML5 video playback.
+        </video>
+        <div class="player-bar">
+          <span id="nowPlaying">Chapter 1: Flat Network Exposure &amp; Clinical Cascade</span>
+          <div class="speed-controls">
+            <span>Speed:</span>
+            <button class="speed-btn active" onclick="setSpeed(1, this)">1x</button>
+            <button class="speed-btn" onclick="setSpeed(1.25, this)">1.25x</button>
+            <button class="speed-btn" onclick="setSpeed(1.5, this)">1.5x</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="chapters-panel">
+        <h2>Walkthrough Chapters</h2>
+        <button class="chapter-btn active" data-start="0" onclick="seekTo(0, this)">
+          <span class="ch-time">00:00</span>
+          <div class="ch-info">
+            <strong>1. Exposure &amp; Clinical Cascade</strong>
+            <span>LDAP/SYSVOL leak &amp; HTTP 503 trauma care freeze</span>
+          </div>
+        </button>
+        <button class="chapter-btn" data-start="85" onclick="seekTo(85, this)">
+          <span class="ch-time">01:25</span>
+          <div class="ch-info">
+            <strong>2. Zero Trust &amp; Break-Glass Fix</strong>
+            <span>UFW tiering, PAW-01 allowlist &amp; offline mode</span>
+          </div>
+        </button>
+        <button class="chapter-btn" data-start="135" onclick="seekTo(135, this)">
+          <span class="ch-time">02:15</span>
+          <div class="ch-info">
+            <strong>3. Containment &amp; Care Survival</strong>
+            <span>[UFW BLOCK] drop &amp; HTTP 200 OK Break-Glass proof</span>
+          </div>
+        </button>
+      </aside>
+    </div>
+
+    <div class="grid-2">
+      <section class="panel">
+        <h3><span class="pill-vuln">Before</span> Act 1: Flat Network Cascade</h3>
+        <ul>
+          <li>Front-desk PC (<code>WKST-01</code>) enumerated open LDAP (<code>:389</code>) and SMB <code>SYSVOL</code> (<code>:445</code>) on <code>DC-01</code>.</li>
+          <li>Taking <code>DC-01</code> offline froze Trauma CT, Pharmacy, and Stat Lab with <code>HTTP 503 Service Unavailable</code>.</li>
+        </ul>
+        <pre>nmap -sV -p 22,389,445,8443,8444,8445 10.0.2.15
+smbclient //10.0.2.15/SYSVOL -N
+curl -s http://10.0.2.15:8443/ct/trauma-route  # HTTP 503</pre>
+      </section>
+      <section class="panel">
+        <h3><span class="pill-fix">After</span> Act 2–3: Zero Trust + Break-Glass</h3>
+        <ul>
+          <li>UFW locked Tier-0 management exclusively to <code>PAW-01</code> (<code>10.0.2.50</code>) over LDAPS (<code>:636</code>) &amp; SMB3.</li>
+          <li>HIPAA Break-Glass mode kept Trauma CT, Pharmacy &amp; Lab at <code>HTTP 200 OK</code> during a <code>DC-01</code> outage.</li>
+        </ul>
+        <pre>sudo ./remediate_sltt_hospital_zt.sh
+# WKST-01 -> [UFW BLOCK] / NT_STATUS_IO_TIMEOUT
+# CLIN-01 -> HTTP 200 OK | CONTINGENCY BREAK-GLASS ACTIVE</pre>
+      </section>
+    </div>
+  </div>
+  <script>
+    const video = document.getElementById('walkthroughVideo');
+    const nowPlaying = document.getElementById('nowPlaying');
+    const chapterBtns = Array.from(document.querySelectorAll('.chapter-btn'));
+
+    function seekTo(seconds, btn) {
+      video.currentTime = seconds;
+      video.play();
+      setActiveChapter(btn);
+    }
+
+    function setActiveChapter(activeBtn) {
+      chapterBtns.forEach(b => b.classList.remove('active'));
+      activeBtn.classList.add('active');
+      const title = activeBtn.querySelector('strong').textContent;
+      nowPlaying.textContent = 'Chapter ' + title;
+    }
+
+    function setSpeed(rate, btn) {
+      video.playbackRate = rate;
+      document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    video.addEventListener('timeupdate', () => {
+      const t = video.currentTime;
+      let current = chapterBtns[0];
+      for (const btn of chapterBtns) {
+        if (t >= Number(btn.dataset.start)) current = btn;
+      }
+      if (!current.classList.contains('active')) setActiveChapter(current);
+    });
+  </script>
+</body>
+</html>

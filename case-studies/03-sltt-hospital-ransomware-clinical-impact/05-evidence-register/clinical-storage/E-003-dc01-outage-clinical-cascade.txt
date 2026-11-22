@@ -1,0 +1,11 @@
+# Evidence ID: E-003 | Source: CLIN-01 (10.0.2.30) | Target: Tier-1 Clinical Services | UTC: 2026-11-20T13:46:21Z
+--- [1] Baseline Clinical Endpoints With DC-01 Online ---
+HTTP 200 OK | TRAUMA-CT-GATEWAY: Head/Chest CT Worklist & PACS Routing Active (Auth: DC-01 Live)
+HTTP 200 OK | PHARMACY-MED-ADC: Trauma Bay 1 Emergency Medication Dispensing Ready (Auth: DC-01 Live)
+HTTP 200 OK | STAT-LAB-LIS: Blood Gas & Coagulation Panel Reporting Active (Auth: DC-01 Live)
+--- [2] Simulating Ransomware Encryption & Lockout of DC-01 ---
+[!] DC-01 Directory & Authentication Offline (/run/sltt_dc01.online removed)
+--- [3] Downstream Clinical Cascade (Trauma CT, Meds & Stat Lab Halted) ---
+HTTP 503 SERVICE UNAVAILABLE | TRAUMA-CT-GATEWAY: HALTED - Dependency Failure (DC-01 Unreachable)
+HTTP 503 SERVICE UNAVAILABLE | PHARMACY-MED-ADC: HALTED - Dependency Failure (DC-01 Unreachable)
+HTTP 503 SERVICE UNAVAILABLE | STAT-LAB-LIS: HALTED - Dependency Failure (DC-01 Unreachable)
