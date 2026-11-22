@@ -1,6 +1,6 @@
 # Case Study 01: Northeast Radiology (NERAD) — Healthcare Imaging Risk Assessment
 
-[![Live Video Walkthrough](https://img.shields.io/badge/Watch_Walkthrough-11:08_Video-38bdf8?style=for-the-badge)](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-1.html)
+[![Live Video Walkthrough](https://img.shields.io/badge/Watch_Walkthrough-11:08_Video-38bdf8?style=for-the-badge)](https://chris-armata.github.io/network-infrastructure-risk-assessment/showcase/case-study-1.html)
 [![Playbook](https://img.shields.io/badge/Methodology-2026_Healthcare_Imaging_Playbook-34d399?style=for-the-badge)](../../README.md)
 
 This directory contains the complete, self-contained assessment artifact chain for **Case Study 01: Northeast Radiology (NERAD)**, built stage-by-stage in alignment with the **2026 Healthcare Imaging Network & Infrastructure Risk Assessment Operating Playbook** and **NIST SP 1800-24 / NIST SP 800-207**.

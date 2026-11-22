@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chris Armata | Network Infrastructure Risk &amp; Zero Trust Portfolio</title>
+  <style>
+    :root { --bg:#0b0f17; --surface:#121826; --surface-hover:#182032; --border:#232d42; --text:#e6edf7; --muted:#93a1b8; --accent:#38bdf8; --accent-dim:rgba(56,189,248,.12); --green:#34d399; --green-dim:rgba(52,211,153,.12); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,sans-serif; line-height:1.6; padding:2rem 1.25rem 4rem; }
+    .container { max-width:980px; margin:0 auto; }
+    header { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem; padding-bottom:1.75rem; border-bottom:1px solid var(--border); margin-bottom:2.5rem; }
+    .brand h1 { font-size:1.5rem; font-weight:700; letter-spacing:-.02em; }
+    .brand p { color:var(--muted); font-size:.95rem; margin-top:.2rem; }
+    .gh-link { display:inline-flex; align-items:center; gap:.5rem; color:var(--text); background:var(--surface); border:1px solid var(--border); padding:.55rem 1rem; border-radius:8px; text-decoration:none; font-size:.9rem; font-weight:500; }
+    .gh-link:hover { border-color:var(--accent); background:var(--surface-hover); }
+    .hero { margin-bottom:2.75rem; }
+    .badge { display:inline-block; background:var(--accent-dim); color:var(--accent); border:1px solid rgba(56,189,248,.3); font-size:.78rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; padding:.28rem .7rem; border-radius:999px; margin-bottom:.9rem; }
+    .hero h2 { font-size:clamp(1.75rem,3.5vw,2.35rem); font-weight:750; letter-spacing:-.03em; line-height:1.2; margin-bottom:.85rem; }
+    .hero p { color:var(--muted); max-width:720px; font-size:1.05rem; }
+    .section-label { font-size:.82rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:1rem; font-weight:600; }
+    .card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.75rem; margin-bottom:1.5rem; transition:border-color .2s; }
+    .card:hover { border-color:var(--accent); }
+    .card-top { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:.75rem; margin-bottom:.85rem; }
+    .status-pill { background:var(--green-dim); color:var(--green); font-size:.78rem; font-weight:600; padding:.25rem .65rem; border-radius:6px; }
+    .duration { color:var(--muted); font-size:.85rem; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .card h3 { font-size:1.35rem; margin-bottom:.65rem; letter-spacing:-.01em; }
+    .card p { color:var(--muted); margin-bottom:1.25rem; font-size:.98rem; }
+    .tags { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem; }
+    .tag { background:var(--bg); border:1px solid var(--border); color:var(--muted); font-size:.8rem; padding:.25rem .65rem; border-radius:6px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .metrics { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:.9rem; margin-bottom:1.6rem; padding-top:1.1rem; border-top:1px solid var(--border); }
+    .metric span { display:block; font-size:.78rem; color:var(--muted); }
+    .metric strong { font-size:.95rem; color:var(--text); font-weight:600; }
+    .btn-primary { display:inline-flex; align-items:center; gap:.55rem; background:var(--accent); color:#06101d; font-weight:700; font-size:.95rem; padding:.75rem 1.35rem; border-radius:9px; text-decoration:none; }
+    .btn-primary:hover { opacity:.9; }
+    footer { margin-top:3.5rem; padding-top:1.5rem; border-top:1px solid var(--border); color:var(--muted); font-size:.85rem; display:flex; flex-wrap:wrap; justify-content:space-between; gap:.75rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header><div class="brand"><h1>Chris Armata</h1><p>Network Infrastructure Risk Assessment &amp; Security Control Engineering</p></div><a class="gh-link" href="https://github.com/Chris-Armata/network-infrastructure-risk-assessment" target="_blank" rel="noopener">GitHub Repository &nearr;</a></header>
+    <section class="hero"><span class="badge">Technical Assessment Portfolio</span><h2>Empirical Vulnerability Validation &amp; Zero Trust Perimeter Hardening</h2><p>Hands-on lab assessments demonstrating attack-surface discovery, protocol-level exposure testing, and NIST SP 800-207 micro-segmentation controls across critical infrastructure workloads.</p></section>
+    <div class="section-label">Featured Case Studies</div>
+    <article class="card"><div class="card-top"><span class="status-pill">Video Walkthrough &bull; Verified Lab</span><span class="duration">Runtime: 11:08 &bull; 1080p</span></div><h3>Case Study 1: Healthcare PACS (Orthanc) Security &amp; NIST SP 800-207 Zero Trust Remediation</h3><p>End-to-end risk assessment of an unauthenticated medical imaging server exposing DICOM (TCP 4242) and REST/HTTP (TCP 8042) interfaces across a flat subnet, followed by host-based Zero Trust IP allowlisting and unauthorized-client drop verification.</p><div class="tags"><span class="tag">NIST SP 800-207</span><span class="tag">Orthanc PACS</span><span class="tag">DICOM :4242</span><span class="tag">REST API :8042</span><span class="tag">Ubuntu UFW</span></div><div class="metrics"><div class="metric"><span>Baseline Exposure</span><strong>Unauthenticated HTTP 200 &amp; Open DICOM</strong></div><div class="metric"><span>Control Applied</span><strong>Source-IP Micro-Segmentation (UFW)</strong></div><div class="metric"><span>Post-Remediation State</span><strong>Unauthorized Probes Dropped / Timed Out</strong></div></div><a class="btn-primary" href="showcase/case-study-1.html">&#9654; Watch Technical Walkthrough &amp; Lab Breakdown</a></article>
+    <article class="card"><div class="card-top"><span class="status-pill">Video Walkthrough &bull; Verified Lab</span><span class="duration">Runtime: 02:25 &bull; 1080p</span></div><h3>Case Study 2: Ransomware Blast Radius Containment &amp; Zero Trust Micro-Segmentation</h3><p>Modeled after the April 2025 HHS OCR $25,000 enforcement action (Comprehensive Neurology, P.C.). Demonstrates lateral ransomware propagation across unauthenticated SMB shares on a flat network, remediated via Samba RBAC and host-based UFW source-IP micro-segmentation.</p><div class="tags"><span class="tag">NIST SP 800-207</span><span class="tag">HIPAA Security Rule</span><span class="tag">Samba SMB :445</span><span class="tag">Ubuntu UFW</span></div><div class="metrics"><div class="metric"><span>Baseline Exposure</span><strong>Unauthenticated SMB Guest Write</strong></div><div class="metric"><span>Control Applied</span><strong>Samba RBAC + UFW IP Allowlist</strong></div><div class="metric"><span>Post-Remediation State</span><strong>Access Denied &amp; Firewall Drop</strong></div></div><a class="btn-primary" href="showcase/case-study-2.html">&#9654; Watch Technical Walkthrough &amp; Lab Breakdown</a></article>
+    <article class="card"><div class="card-top"><span class="status-pill">Video Walkthrough &bull; Verified Lab</span><span class="duration">Runtime: 07:03 &bull; 1080p</span></div><h3>Case Study 3: SLTT Hospital Ransomware Clinical Impact &amp; Break-Glass Resilience</h3><p>Modeled on the CIS U.S. SLTT Hospital ransomware incident. Demonstrates how a compromised front-desk workstation exploits flat-network LDAP/SYSVOL exposure to knock out a Tier-0 Domain Controller and freeze trauma care (HTTP 503), remediated via PAW-01 UFW isolation and HIPAA Break-Glass offline continuity.</p><div class="tags"><span class="tag">NIST SP 800-207</span><span class="tag">HIPAA 45 CFR 164.308(a)(7)</span><span class="tag">Tier-0 AD / LDAPS :636</span><span class="tag">Break-Glass Mode</span><span class="tag">Ubuntu UFW</span></div><div class="metrics"><div class="metric"><span>Baseline Exposure</span><strong>Open LDAP/SYSVOL &amp; HTTP 503 Freeze</strong></div><div class="metric"><span>Control Applied</span><strong>Tier-0 UFW Isolation + Break-Glass Mode</strong></div><div class="metric"><span>Post-Remediation State</span><strong>[UFW BLOCK] &amp; HTTP 200 OK Continuity</strong></div></div><a class="btn-primary" href="showcase/case-study-3.html">&#9654; Watch Technical Walkthrough &amp; Lab Breakdown</a></article>
+    <footer><span>Chris Armata &mdash; Network Infrastructure Risk Assessment</span><span>Hosted via GitHub Pages &bull; Ad-Free Technical Showcase</span></footer>
+  </div>
+</body>
+</html>

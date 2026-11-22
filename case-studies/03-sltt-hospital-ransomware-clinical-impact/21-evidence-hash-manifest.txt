@@ -24,4 +24,4 @@ a5784243e0adcc9ecd5b2dab0c8138753f79ac867a384d70fdd5a1f5c17f1b24  ./15-clinical-
 627cf0c059887a915f003627a3a18af65684d5ef35fe2b8054d3804a06a25eb5  ./18-remediation-scripts/remediate_sltt_hospital_zt.sh
 d156a19a316f12fb034c6ce47b33675ad0d6829f41b1d0c7e82574058b8c3f53  ./19-assessment-closure-acknowledgement.md
 7dc11f945fdf03b76e1126b24fb32148566bff56df0ae6857e60314ebcbc7eeb  ./20-remediation-validation-report/remediation-validation-report.md
-871ae225edb6987f030a2f68df63a5c74380831b26532c1c1239459131eb30e8  ./README.md
+7ad0df9f8299343f69a5d0e77339c517bf514e4d150cb18b5c014f1b9986d9bb  ./README.md

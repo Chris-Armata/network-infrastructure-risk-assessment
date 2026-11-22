@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case Study 3: SLTT Hospital Ransomware &amp; Break-Glass Resilience | Chris Armata</title>
+  <title>Case Study 2: Ransomware Blast Radius Containment | Chris Armata</title>
   <style>
     :root {
       --bg: #0b0f17;
@@ -215,25 +215,25 @@
 <body>
   <div class="container">
     <nav>
-      <a href="index.html">&larr; Back to Portfolio Overview</a>
-      <a href="https://github.com/Chris-Armata/network-infrastructure-risk-assessment/tree/main/case-studies/03-sltt-hospital-ransomware-clinical-impact" target="_blank" rel="noopener">
-        View 21-Stage Artifacts &amp; Evidence on GitHub &nearr;
+      <a href="../index.html">&larr; Back to Portfolio Overview</a>
+      <a href="https://github.com/Chris-Armata/network-infrastructure-risk-assessment" target="_blank" rel="noopener">
+        View Source on GitHub &nearr;
       </a>
     </nav>
 
     <div class="title-block">
-      <div class="eyebrow">Case Study 03 &bull; SLTT Hospital Ransomware &amp; Clinical Resilience</div>
-      <h1>Tier-0 Identity Isolation &amp; HIPAA Break-Glass Clinical Continuity</h1>
+      <div class="eyebrow">Case Study 02 &bull; Healthcare Ransomware &amp; Zero Trust</div>
+      <h1>Ransomware Blast Radius Containment &amp; Zero Trust Micro-Segmentation</h1>
     </div>
 
     <div class="player-grid">
       <div class="video-shell">
         <video id="walkthroughVideo" controls preload="metadata" playsinline>
-          <source src="case_study_3_web.mp4" type="video/mp4" />
+          <source src="../media/case_study_2_web.mp4" type="video/mp4" />
           Your browser does not support HTML5 video playback.
         </video>
         <div class="player-bar">
-          <span id="nowPlaying">Chapter 1: Flat Network Exposure &amp; Clinical Cascade</span>
+          <span id="nowPlaying">Chapter 1: Context &amp; Assumed Breach</span>
           <div class="speed-controls">
             <span>Speed:</span>
             <button class="speed-btn active" onclick="setSpeed(1, this)">1x</button>
@@ -245,50 +245,49 @@
 
       <aside class="chapters-panel">
         <h2>Walkthrough Chapters</h2>
-        <button class="chapter-btn active" data-start="0" onclick="seekTo(0, this)">
-          <span class="ch-time">00:00</span>
-          <div class="ch-info">
-            <strong>1. Exposure &amp; Clinical Cascade</strong>
-            <span>LDAP/SYSVOL leak &amp; HTTP 503 trauma care freeze</span>
-          </div>
-        </button>
-        <button class="chapter-btn" data-start="150" onclick="seekTo(150, this)">
-          <span class="ch-time">02:30</span>
-          <div class="ch-info">
-            <strong>2. Zero Trust &amp; Break-Glass Fix</strong>
-            <span>UFW tiering, PAW-01 allowlist &amp; offline mode</span>
-          </div>
-        </button>
-        <button class="chapter-btn" data-start="290" onclick="seekTo(290, this)">
-          <span class="ch-time">04:50</span>
-          <div class="ch-info">
-            <strong>3. Containment &amp; Care Survival</strong>
-            <span>[UFW BLOCK] drop &amp; HTTP 200 OK Break-Glass proof</span>
-          </div>
-        </button>
-      </aside>
+        <button class="chapter-btn active" data-start="0" data-title="Chapter 1: Context &amp; Assumed Breach">
+              <span class="chapter-time">00:00</span>
+              <div class="chapter-info">
+                <div class="chapter-title">1. Context &amp; Assumed Breach</div>
+                <div class="chapter-desc">HHS OCR context, SMB enumeration &amp; ransomware drop</div>
+              </div>
+            </button>
+            <button class="chapter-btn" data-start="50" data-title="Chapter 2: Zero Trust Defense in Depth">
+              <span class="chapter-time">00:50</span>
+              <div class="chapter-info">
+                <div class="chapter-title">2. Zero Trust Defense in Depth</div>
+                <div class="chapter-desc">Samba RBAC &amp; UFW source-IP micro-segmentation</div>
+              </div>
+            </button>
+            <button class="chapter-btn" data-start="100" data-title="Chapter 3: Containment &amp; Verification">
+              <span class="chapter-time">01:40</span>
+              <div class="chapter-info">
+                <div class="chapter-title">3. Containment &amp; Verification</div>
+                <div class="chapter-desc">NT_STATUS_ACCESS_DENIED &amp; firewall drop proof</div>
+              </div>
+            </button>
+</aside>
     </div>
 
     <div class="grid-2">
       <section class="panel">
-        <h3><span class="pill-vuln">Before</span> Act 1: Flat Network Cascade</h3>
+        <h3><span class="pill-vuln">Before</span> Phase 1: Assumed Breach</h3>
         <ul>
-          <li>Front-desk PC (<code>WKST-01</code>) enumerated open LDAP (<code>:389</code>) and SMB <code>SYSVOL</code> (<code>:445</code>) on <code>DC-01</code>.</li>
-          <li>Taking <code>DC-01</code> offline froze Trauma CT, Pharmacy, and Stat Lab with <code>HTTP 503 Service Unavailable</code>.</li>
+          <li>Samba configured with <code>guest ok = yes</code> and <code>0777</code> permissions on <code>ClinicBackups</code>.</li>
+          <li>UFW exposed <code>445/tcp</code> to all internal hosts.</li>
         </ul>
-        <pre>nmap -sV -p 22,389,445,8443,8444,8445 10.0.2.15
-smbclient //10.0.2.15/SYSVOL -N
-curl -s http://10.0.2.15:8443/ct/trauma-route  # HTTP 503</pre>
+        <pre>smbclient -L //10.0.2.15 -N
+smbclient //10.0.2.15/ClinicBackups -N -c "put payload.txt"</pre>
       </section>
       <section class="panel">
-        <h3><span class="pill-fix">After</span> Act 2–3: Zero Trust + Break-Glass</h3>
+        <h3><span class="pill-fix">After</span> Phase 3: Zero Trust Enforcement</h3>
         <ul>
-          <li>UFW locked Tier-0 management exclusively to <code>PAW-01</code> (<code>10.0.2.50</code>) over LDAPS (<code>:636</code>) &amp; SMB3.</li>
-          <li>HIPAA Break-Glass mode kept Trauma CT, Pharmacy &amp; Lab at <code>HTTP 200 OK</code> during a <code>DC-01</code> outage.</li>
+          <li>Enforced <code>map to guest = never</code> and <code>valid users = backup_admin</code>.</li>
+          <li>Restricted <code>445/tcp</code> exclusively to <code>10.0.2.50</code> via UFW.</li>
         </ul>
-        <pre>sudo ./remediate_sltt_hospital_zt.sh
-# WKST-01 -> [UFW BLOCK] / NT_STATUS_IO_TIMEOUT
-# CLIN-01 -> HTTP 200 OK | CONTINGENCY BREAK-GLASS ACTIVE</pre>
+        <pre>sudo ufw delete allow 445/tcp
+sudo ufw allow from 10.0.2.50 to any port 445 proto tcp
+sudo systemctl restart smbd</pre>
       </section>
     </div>
   </div>

@@ -1,6 +1,6 @@
 # Case Study 03: U.S. SLTT Hospital — Tier-0 Ransomware Clinical Impact & HIPAA Break-Glass Resilience
 - **Assessment ID:** `SLTT-HOSP-ZTA-2026-03` | **Benchmark:** CIS SLTT Hospital Ransomware | NIST SP 800-207 | HIPAA `45 CFR § 164.308(a)(7)`
-- **Live Walkthrough (07:03):** [Watch Interactive Demo](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-3.html)
+- **Live Walkthrough (07:03):** [Watch Interactive Demo](https://chris-armata.github.io/network-infrastructure-risk-assessment/showcase/case-study-3.html)
 
 | Asset ID | Host | IPv4 | Baseline (Act 1) | Hardened (Act 2–3) |
 | :--- | :--- | :--- | :--- | :--- |

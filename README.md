@@ -2,9 +2,9 @@
 
 [![Live Portfolio Showcase](https://img.shields.io/badge/Live_Showcase-GitHub_Pages-38bdf8?style=for-the-badge&logo=github)](https://chris-armata.github.io/network-infrastructure-risk-assessment/)
 [![Framework](https://img.shields.io/badge/Framework-NIST_SP_800--207-34d399?style=for-the-badge)](#operating-methodology)
-[![Case Study 01](https://img.shields.io/badge/Case_Study_01-Video_Walkthrough_(11:08)-0f172a?style=for-the-badge)](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-1.html)
-[![Case Study 02](https://img.shields.io/badge/Case_Study_02-Video_Walkthrough_(02:25)-0f172a?style=for-the-badge)](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-2.html)
-[![Case Study 03](https://img.shields.io/badge/Case_Study_03-Video_Walkthrough_(07:03)-0f172a?style=for-the-badge)](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-3.html)
+[![Case Study 01](https://img.shields.io/badge/Case_Study_01-Video_Walkthrough_(11:08)-0f172a?style=for-the-badge)](https://chris-armata.github.io/network-infrastructure-risk-assessment/showcase/case-study-1.html)
+[![Case Study 02](https://img.shields.io/badge/Case_Study_02-Video_Walkthrough_(02:25)-0f172a?style=for-the-badge)](https://chris-armata.github.io/network-infrastructure-risk-assessment/showcase/case-study-2.html)
+[![Case Study 03](https://img.shields.io/badge/Case_Study_03-Video_Walkthrough_(07:03)-0f172a?style=for-the-badge)](https://chris-armata.github.io/network-infrastructure-risk-assessment/showcase/case-study-3.html)
 
 A practical healthcare and critical-infrastructure cyber risk assessment operating playbook, laboratory, and portfolio of empirical, evidence-backed case studies.
 
@@ -25,7 +25,7 @@ Every assessment in this repository follows a reproducible, three-phase validati
 ## Case Study Index
 
 ### Case Study 01: Healthcare PACS (Orthanc) Security & NIST SP 800-207 Zero Trust Remediation
-- **Live Walkthrough:** [Watch 11:08 Technical Video & Chapter Breakdown](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-1.html)
+- **Live Walkthrough:** [Watch 11:08 Technical Video & Chapter Breakdown](https://chris-armata.github.io/network-infrastructure-risk-assessment/showcase/case-study-1.html)
 - **Full 21-Stage Assessment Artifacts:** [`case-studies/01-northeast-radiology/`](case-studies/01-northeast-radiology/)
 - **Target Workload:** Orthanc Medical Imaging Server (PACS) hosting Protected Health Information (PHI)
 - **Protocols Assessed:** DICOM (`TCP 4242`) and Orthanc REST API / Web Explorer (`TCP 8042`)
@@ -51,7 +51,7 @@ Every assessment in this repository follows a reproducible, three-phase validati
 ---
 
 ### Case Study 02: Comprehensive Neurology, P.C. — Ransomware Blast Radius Containment & Zero Trust Remediation
-- **Live Walkthrough:** [Watch 02:25 Technical Video & Chapter Breakdown](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-2.html)
+- **Live Walkthrough:** [Watch 02:25 Technical Video & Chapter Breakdown](https://chris-armata.github.io/network-infrastructure-risk-assessment/showcase/case-study-2.html)
 - **Full 21-Stage Assessment Artifacts:** [`case-studies/02-comprehensive-neurology-ransomware/`](case-studies/02-comprehensive-neurology-ransomware/README.md)
 - **Raw Evidence & Automation:** [`05-evidence-register/`](case-studies/02-comprehensive-neurology-ransomware/05-evidence-register/) | [`remediate_smb_zerotrust.sh`](case-studies/02-comprehensive-neurology-ransomware/18-remediation-scripts/remediate_smb_zerotrust.sh) | [`SHA-256 Manifest`](case-studies/02-comprehensive-neurology-ransomware/21-evidence-hash-manifest.txt)
 - **Regulatory Benchmark:** April 2025 HHS OCR HIPAA Resolution Agreement ($25,000 Settlement / ~6,800 Patient ePHI Records)
@@ -77,7 +77,7 @@ Every assessment in this repository follows a reproducible, three-phase validati
 ---
 
 ### Case Study 03: U.S. SLTT Hospital — Tier-0 Ransomware Clinical Impact & HIPAA Break-Glass Resilience
-- **Live Walkthrough:** [Watch 07:03 Technical Video & Chapter Breakdown](https://chris-armata.github.io/network-infrastructure-risk-assessment/case-study-3.html)
+- **Live Walkthrough:** [Watch 07:03 Technical Video & Chapter Breakdown](https://chris-armata.github.io/network-infrastructure-risk-assessment/showcase/case-study-3.html)
 - **Full 21-Stage Assessment Artifacts:** [`case-studies/03-sltt-hospital-ransomware-clinical-impact/`](case-studies/03-sltt-hospital-ransomware-clinical-impact/README.md)
 - **Raw Evidence & Automation:** [`05-evidence-register/`](case-studies/03-sltt-hospital-ransomware-clinical-impact/05-evidence-register/) | [`remediate_sltt_hospital_zt.sh`](case-studies/03-sltt-hospital-ransomware-clinical-impact/18-remediation-scripts/remediate_sltt_hospital_zt.sh) | [`SHA-256 Manifest`](case-studies/03-sltt-hospital-ransomware-clinical-impact/21-evidence-hash-manifest.txt)
 - **Regulatory & Threat Benchmark:** CIS SLTT Hospital Ransomware Incident | NIST SP 800-207 | NIST CSF 2.0 | HIPAA Security Rule (`45 CFR § 164.308(a)(7)`)
@@ -107,16 +107,13 @@ Every assessment in this repository follows a reproducible, three-phase validati
 
 ```text
 network-infrastructure-risk-assessment/
-├── README.md                                          # Operating playbook, lab topology & case study index
-├── index.html                                         # GitHub Pages portfolio hub
-├── case-study-1.html                                  # Case Study 01 interactive video player & chapters
-├── case_study_1_web.mp4                               # Case Study 01 1080p walkthrough (11:08)
-├── case-study-2.html                                  # Case Study 02 interactive video player & chapters
-├── case_study_2_web.mp4                               # Case Study 02 1080p walkthrough (02:25)
-├── case-study-3.html                                  # Case Study 03 interactive video player & chapters
-├── case_study_3_web.mp4                               # Case Study 03 1080p walkthrough (07:03)
-└── case-studies/
-    ├── 01-northeast-radiology/                        # 21-stage PACS / DICOM risk assessment & E-001..E-006
-    ├── 02-comprehensive-neurology-ransomware/         # 21-stage Ransomware / SMB assessment, scripts & E-001..E-006
-    └── 03-sltt-hospital-ransomware-clinical-impact/   # 21-stage SLTT Hospital assessment, scripts & E-001..E-006
+├── README.md       # Operating playbook, lab topology & case study index
+├── index.html      # GitHub Pages portfolio hub
+├── .nojekyll       # Direct static HTML/MP4 serving on GitHub Pages
+├── showcase/       # Interactive chaptered HTML video players (Case Studies 01–03)
+├── media/          # Web-optimized (+faststart) 1080p MP4 walkthroughs
+└── case-studies/   # 21-stage empirical audit playbooks, scripts & SHA-256 evidence
+    ├── 01-northeast-radiology/
+    ├── 02-comprehensive-neurology-ransomware/
+    └── 03-sltt-hospital-ransomware-clinical-impact/
 ```
