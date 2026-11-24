@@ -1,0 +1,6 @@
+# E-002: Orphaned Contractor Account & Lifecycle Status (vendor_maint)
+vendor_maint L 2026-11-24 0 99999 7 -1
+Last password change                                    : Nov 24, 2026
+Password expires                                        : never
+Account expires                                         : never
+Finding: Contractor account 'vendor_maint' remained active with no expiration date post-contract (NIST AC-2 / HIPAA 164.308(a)(3)).

@@ -1,0 +1,5 @@
+# E-001: Live Network Socket & Perimeter Exposure (10.200.0.15)
+tcp   LISTEN 0      4096            0.0.0.0:22        0.0.0.0:*
+tcp   LISTEN 0      5               0.0.0.0:8443      0.0.0.0:*
+tcp   LISTEN 0      4096               [::]:22           [::]:*
+Finding: Unapproved firewall configuration exposed SSH (22/tcp) and EHR/PACS Portal (8443/tcp) without NIST CM-4 change authorization.

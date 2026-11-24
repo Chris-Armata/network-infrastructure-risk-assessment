@@ -1,0 +1,6 @@
+# E-003: Live Unauthorized Access from Ex-Contractor Laptop (10.200.0.45)
+Connection to 10.200.0.15 22 port [tcp/ssh] succeeded!
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.12.3
+Date: Tue, 24 Nov 2026 03:30:48 GMT
+Status: Unauthorized contractor endpoint (10.200.0.45) reached ports 22/tcp and 8443/tcp prior to Zero Trust enforcement.

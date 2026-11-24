@@ -1,0 +1,5 @@
+# E-005: Post-Remediation Account Lock & Kernel UFW BLOCK Telemetry
+vendor_maint L 2026-11-24 0 99999 7 -1
+Account expires                                         : May 28, 2026
+[BLOCKED] Connection from Ex-Contractor 10.200.0.45 dropped by UFW Firewall!
+[94564.834342] [UFW BLOCK] IN=enp0s3 OUT= MAC=08:00:27:f5:4a:4d:52:54:00:12:35:00:08:00 SRC=10.0.2.2 DST=10.0.2.15 LEN=44 TOS=0x00 PREC=0x00 TTL=64 ID=52756 PROTO=TCP SPT=51244 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0

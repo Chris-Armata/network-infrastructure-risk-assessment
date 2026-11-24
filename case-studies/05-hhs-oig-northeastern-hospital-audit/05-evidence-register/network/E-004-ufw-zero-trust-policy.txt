@@ -1,0 +1,8 @@
+# E-004: Zero Trust UFW Micro-Segmentation & NIST CM-4 Governance
+Status: active
+     To                         Action      From
+     --                         ------      ----
+[ 1] 2222/tcp                   ALLOW IN    Anywhere                   # Lab Management Access
+[ 2] 10.200.0.15                DENY IN     10.200.0.45                # Revoked Contractor Blocked
+[ 3] 10.200.0.15 22/tcp         ALLOW IN    10.200.0.50                # Approved Audit Safe SSH
+[ 4] 10.200.0.15 8443/tcp       ALLOW IN    10.200.0.50                # Approved Audit Safe EHR Portal
