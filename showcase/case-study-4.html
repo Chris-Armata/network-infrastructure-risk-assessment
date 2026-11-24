@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Case Study 4: TransForm SSO — Multi-Hospital Supply-Chain Risk</title>
+<style>:root{--bg:#0b0f17;--surface:#121826;--border:#232d42;--text:#e6edf7;--muted:#93a1b8;--accent:#38bdf8;--green:#34d399;--red:#f87171}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,sans-serif;line-height:1.6;padding:2rem 1.25rem 4rem}.container{max-width:980px;margin:0 auto}.nav{display:flex;justify-content:space-between;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}.nav a{color:var(--accent);text-decoration:none;font-weight:600}.badge{display:inline-block;background:rgba(56,189,248,.12);color:var(--accent);border:1px solid rgba(56,189,248,.3);font-size:.8rem;font-weight:600;padding:.25rem .7rem;border-radius:999px;margin-bottom:.75rem}h1{font-size:2rem;margin-bottom:.65rem}.sub{color:var(--muted);margin-bottom:1.5rem}.video-wrap{background:#000;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1rem}video{width:100%;display:block;max-height:540px}.chapters{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}.chap-btn{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:.55rem .9rem;cursor:pointer;font-weight:600}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem;margin-bottom:2rem}.panel{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.35rem}pre{background:#070a10;border:1px solid var(--border);border-radius:8px;padding:.9rem;font-size:.8rem;overflow-x:auto;color:#cbd5e1}</style>
+</head><body><div class="container">
+<nav class="nav"><a href="../index.html">&larr; Back to Portfolio Hub</a><a href="https://github.com/Chris-Armata/network-infrastructure-risk-assessment/tree/main/case-studies/04-transform-sso-shared-services-ransomware" target="_blank">View 21-Stage Audit Folder &nearr;</a></nav>
+<span class="badge">Multi-Hospital TPRM &amp; PHIPA &bull; Runtime 05:09</span>
+<h1>Case Study 4: TransForm Shared Service Organization (SSO) — Multi-Hospital Supply-Chain Risk</h1>
+<p class="sub">Modeled on the October 2023 ransomware attack affecting five Ontario hospitals (IPC Ontario / PHIPA). Explains in plain English how one master key at an outside IT company knocks five hospitals offline—and how Zero Trust per-hospital isolation stops the spread.</p>
+<div class="video-wrap"><video id="vid" controls preload="metadata"><source src="../media/case_study_4_web.mp4" type="video/mp4"/></video></div>
+<div class="chapters">
+<button class="chap-btn" onclick="seekTo(0)">Act 1 (00:00): One Master Key Locks 5 Hospitals</button>
+<button class="chap-btn" onclick="seekTo(117)">Act 2 (01:57): Zero Trust &amp; UFW Firewall Guard</button>
+<button class="chap-btn" onclick="seekTo(222)">Act 3 (03:42): Isolated 200 OK Recovery</button>
+</div>
+<div class="grid">
+<div class="panel"><h3 style="color:var(--red);margin-bottom:.6rem">BEFORE: One Master Key Across 5 Hospitals</h3><pre>MASTER_ADMIN_KEY="ACTIVE_FOR_ALL_5_HOSPITALS"
+MFA_REQUIRED="FALSE"
+{"hospital":"Bluewater","status":"503 OFFLINE - RANSOMWARE LOCKED"}</pre></div>
+<div class="panel"><h3 style="color:var(--green);margin-bottom:.6rem">AFTER: Zero Trust Per-Hospital Isolation</h3><pre>MASTER_ADMIN_KEY="REVOKED" | Default: deny (incoming)
+2222/tcp ALLOW IN 10.0.2.50 (SSH) | 8443/tcp ALLOW IN 10.0.2.50 (HTTPS)
+{"hospital":"Bluewater","status":"200 OK - ONLINE &amp; ISOLATED"}</pre></div>
+</div></div><script>function seekTo(s){const v=document.getElementById('vid');v.currentTime=s;v.play();}</script></body></html>

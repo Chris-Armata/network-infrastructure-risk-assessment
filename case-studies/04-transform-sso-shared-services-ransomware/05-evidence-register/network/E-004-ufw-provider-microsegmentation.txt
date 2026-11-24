@@ -1,0 +1,5 @@
+Status: active
+Logging: on (medium)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+2222/tcp ALLOW IN 10.0.2.50 # Approved Admin Safe Only
+8443/tcp ALLOW IN 10.0.2.50 # Approved Medical Hub Only

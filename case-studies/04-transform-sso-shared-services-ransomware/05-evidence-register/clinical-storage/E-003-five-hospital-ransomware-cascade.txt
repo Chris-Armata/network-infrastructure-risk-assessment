@@ -1,0 +1,6 @@
+[!] Hacker stole admin laptop (10.0.2.40) and used MASTER_ADMIN_KEY...
+{"hospital":"Bluewater","status":"503 OFFLINE - RANSOMWARE LOCKED","phipa_breach":true}
+{"hospital":"Chatham-Kent","status":"503 OFFLINE - RANSOMWARE LOCKED","phipa_breach":true}
+{"hospital":"Erie-Shores","status":"503 OFFLINE - RANSOMWARE LOCKED","phipa_breach":true}
+{"hospital":"Hotel-Dieu-Grace","status":"503 OFFLINE - RANSOMWARE LOCKED","phipa_breach":true}
+{"hospital":"Windsor-Regional","status":"503 OFFLINE - RANSOMWARE LOCKED","phipa_breach":true}

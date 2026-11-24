@@ -1,0 +1,5 @@
+{"hospital":"Bluewater","status":"200 OK - ONLINE & ISOLATED","phipa_audit":"ACTIVE"}
+{"hospital":"Chatham-Kent","status":"200 OK - ONLINE & ISOLATED","phipa_audit":"ACTIVE"}
+{"hospital":"Erie-Shores","status":"200 OK - ONLINE & ISOLATED","phipa_audit":"ACTIVE"}
+{"hospital":"Hotel-Dieu-Grace","status":"200 OK - ONLINE & ISOLATED","phipa_audit":"ACTIVE"}
+{"hospital":"Windsor-Regional","status":"200 OK - ONLINE & ISOLATED","phipa_audit":"ACTIVE"}
